@@ -38,7 +38,7 @@ angular.module('starter', ['ionic','firebase','starter.configs'])
 .config(['$stateProvider', '$urlRouterProvider','$ionicConfigProvider','$sceDelegateProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $sceDelegateProvider) {
     
     $sceDelegateProvider.resourceUrlWhitelist(['self', new RegExp('^(http[s]?):\/\/(w{3}.)?youtube\.com/.+$')]);
-    
+
     $ionicConfigProvider.navBar.alignTitle('center');
 
     $stateProvider
@@ -94,23 +94,27 @@ angular.module('starter', ['ionic','firebase','starter.configs'])
 
 .controller('loginController',['$scope', '$firebaseArray', 'CONFIG', '$document', '$state', function($scope, $firebaseArray, CONFIG, $document, $state) {
 
+   //add block where username and password are read from localstorage
+    // var $scope.userLogin.username = 'julioarhernandez@gmail.com';
+    // var $scope.userLogin.password = '3edcvfr4qQ';
 
+     $scope.userLogin = { username: 'julioarhernandez@gmail.com', password: '3edcvfr4qQ'};
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(userLogin) {
     
-
+   ;
    
     console.log(userLogin);
 
-    if($document[0].getElementById("user_name").value != "" && $document[0].getElementById("user_pass").value != ""){
+ 
 
+    if( ($document[0].getElementById("user_name").value != "" && $document[0].getElementById("user_pass").value != "")){
 
+  
         firebase.auth().signInWithEmailAndPassword(userLogin.username, userLogin.password).then(function() {
           // Sign-In successful.
           //console.log("Login successful");
-
-
           
 
                     var user = firebase.auth().currentUser;
