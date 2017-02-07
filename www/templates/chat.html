@@ -1,0 +1,27 @@
+<ion-view title="Messages" ng-controller="chatController" cache-view="false" hide-back-button="false" hide-nav-bar="false">
+    <ion-content class="has-header">
+        <!-- <div class="list" scroll-glue> -->
+            <ion-list>
+            <ion-item ng-repeat="todo in data.todos" class="item">
+            <!-- <div ng-repeat="todo in data.todos" class="item"> -->
+
+                {{todo.msg}}  - {{todo.date | date:'yyyy-MM-dd'}} - {{ todo.status }}
+            <!-- </div> -->
+            <i class="icon ion-chevron-right"></i>
+            <ion-option-button class="button-assertive"> Delete </ion-option-button>
+            </ion-item>
+            </ion-list>
+        <!-- </div> -->
+        <form name="form_message" novalidate>
+        <div class="item item-input-inset">
+            
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="Email" ng-model="message" id="message">
+            </label>
+            <button class="button button-small" ng-click="create()">
+              Submit
+            </button>
+         
+          </div>   </form>
+    </ion-content>
+</ion-view>
